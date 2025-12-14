@@ -3,7 +3,7 @@
 ##      push(5), push(3), pop(), push(2), push(8), pop(), pop(), push(9), push(1), pop(), push(7),
 ##      push(6), pop(), pop(), push(4), pop(), pop().
 
-from exercicio1 import ArrayStack
+from trabalho1.exercicio_01 import ArrayStack
 
 pilha = ArrayStack()
 

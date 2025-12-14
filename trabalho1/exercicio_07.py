@@ -3,7 +3,7 @@
 ##      add first(4), add last(8), add last(9), add first(5), back(), delete first( ), delete last( )
 ##      add last(7), first( ), last( ), add last(6), delete first( ), delete first( ).
 
-from exercicio1 import ArrayDeque
+from trabalho1.exercicio_01 import ArrayDeque
 
 
 deque = ArrayDeque()

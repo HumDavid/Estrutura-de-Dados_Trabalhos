@@ -1,7 +1,7 @@
 ##  Exercício: 4.
 ##  Forneça um método recursivo para remover todos os elementos de uma pilha.
 
-from exercicio1 import ArrayStack
+from trabalho1.exercicio_01 import ArrayStack
 
 def remove_all(stack):
     if stack.is_empty():

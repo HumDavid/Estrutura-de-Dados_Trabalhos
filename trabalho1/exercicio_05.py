@@ -2,7 +2,7 @@
 ##  Implemente uma função que inverte uma lista de elementos colocando-os em uma pilha em
 ##  uma ordem e escrevendo-os de volta na lista na ordem inversa.
 
-from exercicio1 import ArrayStack
+from trabalho1.exercicio_01 import ArrayStack
 
 def invert_stack(stack: ArrayStack):
     temp1 = ArrayStack()

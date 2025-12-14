@@ -3,7 +3,7 @@
 ##  pilha S para a pilha T, de modo que o elemento que come ̧ca no topo de S seja o primeiro a
 ##  ser inserido em T, e o elemento na parte inferior de S termine no topo de T.
 
-from exercicio1 import ArrayStack
+from trabalho1.exercicio_01 import ArrayStack
 
 def Transfer(S, T):
     while S:

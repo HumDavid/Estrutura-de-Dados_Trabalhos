@@ -1,7 +1,7 @@
 ##  Exercício: 10.
 ##  Implemente uma calculadora aritmética de inteiros usando pilhas.
 
-from exercicio1 import ArrayStack
+from trabalho1.exercicio_01 import ArrayStack
 
 def operators():
     return {

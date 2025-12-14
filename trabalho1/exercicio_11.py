@@ -3,7 +3,7 @@
 ##  palíndromo (ou seja, se os caracteressão lidos da mesma forma, tanto para a frente quanto
 ##  para trás).
 
-from exercicio1 import ArrayStack, ArrayQueue
+from trabalho1.exercicio_01 import ArrayStack, ArrayQueue
 import os
 
 def palindromo_verify(expression):

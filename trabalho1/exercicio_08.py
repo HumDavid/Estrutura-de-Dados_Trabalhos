@@ -2,7 +2,7 @@
 ##  Escreva um programa para verificar se em uma string contendo uma expressão aritmética, os
 ##  parênteses de abertura e fechamento estão bem formados ou não.
 
-from exercicio1 import ArrayStack
+from trabalho1.exercicio_01 import ArrayStack
 
 def verify_parentheses(expression: str):
     pilha = ArrayStack()
