@@ -123,27 +123,25 @@ class ArrayBinaryTree(BinaryTree):
     
     def _delete(self, p):
         index = self._validate(p)
+        old = self._data[index]
         
         if self.num_children(p) == 2:
             raise ValueError('p has two children')
         
-        child_index = None
-        left_idx = 2 * index + 1
-        right_idx = 2 * index + 2
+        left = 2 * index + 1
+        right = 2 * index + 2
         
-        if left_idx < len(self._data) and self._data[left_idx] is not None:
-            child_index = left_idx
-        elif right_idx < len(self._data) and self._data[right_idx] is not None:
-            child_index = right_idx
+        if left < len(self._data) and self._data[left] is not None:
+            self._data[index] = self._data[left]
+            self._data[left] = None
+        elif right < len(self._data) and self._data[right] is not None:
+            self._data[index] = self._data[right]
+            self._data[right] = None
+        else:
+            self._data[index] = None
         
-        element = self._data[index]
-        self._data[index] = None
         self._size -= 1
-        
-        if child_index is not None:
-            self._delete_subtree(child_index)
-        
-        return element
+        return old
     
     def _delete_subtree(self, index):
         if index >= len(self._data) or self._data[index] is None:
@@ -154,39 +152,6 @@ class ArrayBinaryTree(BinaryTree):
         
         self._delete_subtree(2 * index + 1)
         self._delete_subtree(2 * index + 2)
-    
-    def _attach(self, p, t1, t2):
-        if not self.is_leaf(p):
-            raise ValueError('position must be leaf')
-        
-        index = self._validate(p)
-        
-        if not t1.is_empty():
-            self._attach_tree(t1, 2 * index + 1)
-        
-        if not t2.is_empty():
-            self._attach_tree(t2, 2 * index + 2)
-    
-    def _attach_tree(self, tree, index):
-        if tree.is_empty():
-            return
-        
-        from collections import deque
-        
-        queue = deque()
-        queue.append((0, index))
-        
-        while queue:
-            src_idx, dst_idx = queue.popleft()
-            
-            self._resize_to_index(dst_idx)
-            
-            if src_idx < len(tree._data) and tree._data[src_idx] is not None:
-                self._data[dst_idx] = tree._data[src_idx]
-                self._size += 1
-                
-                queue.append((2 * src_idx + 1, 2 * dst_idx + 1))
-                queue.append((2 * src_idx + 2, 2 * dst_idx + 2))
     
     def positions(self):
         return self.inorder()
@@ -219,78 +184,10 @@ class ArrayBinaryTree(BinaryTree):
         print()
 
 if __name__ == '__main__':
-    print("="*85)
-    print("="*34 + " ArrayBinaryTree " + "="*34)
-    print("="*85)
-    
-    print("\n" + "-"*85 + "\n")
     T = ArrayBinaryTree()
-    print("T = ArrayBinaryTree()")
-    root = T._add_root('A')
-    print("root = T._add_root('A')")
+    r = T._add_root('A')
+    T._add_left(r, 'B')
+    T._add_right(r, 'C')
 
-    print(f"\nRaiz em índice {0}: {root.element()}\n")
-    
-    B = T._add_left(root, 'B')
-    print("B = T._add_left(root, 'B')")
-    C = T._add_right(root, 'C')
-    print("C = T._add_right(root, 'C')")
-
-    print(f"\nFilho esquerdo de A em índice 1: {B.element()}")
-    print(f"Filho direito de A em índice 2: {C.element()}\n")
-    
-    D = T._add_left(B, 'D')
-    print("D = T._add_left(B, 'D')")
-    E = T._add_right(B, 'E')
-    print("E = T._add_right(B, 'E')")
-
-    print(f"\nFilho esquerdo de B em índice 3: {D.element()}")
-    print(f"Filho direito de B em índice 4: {E.element()}\n")
-    
-    F = T._add_left(C, 'F')
-    print("F = T._add_left(C, 'F')")
-    G = T._add_right(C, 'G')
-    print("G = T._add_right(C, 'G')")
-
-    print(f"\nFilho esquerdo de C em índice 5: {F.element()}")
-    print(f"Filho direito de C em índice 6: {G.element()}\n")
-    
-    H = T._add_left(E, 'H')
-    print("H = T._add_left(E, 'H')")
-
-    print(f"\nFilho esquerdo de E em índice 9: {H.element()}\n")
-    
-    print("Estado do array (com buracos nos índices 7 e 8):")
-    T.print_array()
-    
-    print("\n" + "-"*85 + "\n")
-    print(f"Pai de H (índice 9): {(9-1)//2} -> {T.parent(H).element() if T.parent(H) else None}")
-    print(f"Filho esquerdo de C (índice 2): {2*2+1} -> {T.left(C).element() if T.left(C) else None}")
-    print(f"Filho direito de C (índice 2): {2*2+2} -> {T.right(C).element() if T.right(C) else None}")
-    
-    print("\n" + "-"*85 + "\n")
-    print("Elementos em ordem: ", end="")
-    for pos in T.inorder():
-        print(pos.element(), end=" ")
-    print()
-    
-    print("\n" + "-"*85 + "\n")
-    old = T._replace(H, 'Z')
-    print("old = T._replace(H, 'Z')")
-
-    print(f"Substituído {old} por {H.element()} em H")
-    
-    print("\n" + "-"*85 + "\n")
-    print(f"Profundidade de H: {T.depth(H)}")
-    print(f"Altura da árvore: {T.height()}")
-    print(f"Altura de B: {T.height(B)}")
-    
-    print("\n" + "-"*85 + "\n")
-    print(f"Tamanho antes de deletar D: {len(T)}")
-
-    T._delete(D)
-    print("T._delete(D)")
-
-    print(f"Tamanho após deletar D: {len(T)}")
-    print("Array após deletar D:")
-    T.print_array()
+    for p in T.inorder():
+        print(p.element(), end=' ')

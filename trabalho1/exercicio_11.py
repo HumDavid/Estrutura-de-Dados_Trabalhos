@@ -4,7 +4,6 @@
 ##  para trás).
 
 from trabalho1.exercicio_01 import ArrayStack, ArrayQueue
-import os
 
 def palindromo_verify(expression):
     stack = ArrayStack()

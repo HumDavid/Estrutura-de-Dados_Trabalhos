@@ -1,6 +1,6 @@
-    ##  Exercício: 20.
-    ##  Modifique a classe DoublyLinkedBase para incluir um método reverse que inverte a ordem
-    ##  da lista, mas sem criar ou destruir nenhum nó.
+##  Exercício: 20.
+##  Modifique a classe DoublyLinkedBase para incluir um método reverse que inverte a ordem
+##  da lista, mas sem criar ou destruir nenhum nó.
 
 class _Node:
     __slots__ = '_element', '_prev', '_next'
@@ -65,26 +65,10 @@ class DoublyLinkedBase:
         if self._trailer._prev:
             self._trailer._prev._next = self._trailer
 
-if __name__ == '__main__':
-    class Deque(DoublyLinkedBase):
-        def add_first(self, element):
-            self._insert_between(element, self._header, self._header._next)
-        
-        def add_last(self, element):
-            self._insert_between(element, self._trailer._prev, self._trailer)
-        
-        def __str__(self):
-            elements = []
-            current = self._header._next
-            while current != self._trailer:
-                elements.append(str(current._element))
-                current = current._next
-            return f"[{', '.join(elements)}]"
-    
-    deque = Deque()
-    for i in range(5):
-        deque.add_last(i)
-    
-    print("Antes do reverse:", deque)
-    deque.reverse()
-    print("Depois do reverse:", deque)
+if __name__ == "__main__":
+    dll = DoublyLinkedBase()
+    dll._insert_between(1, dll._header, dll._trailer)
+    dll._insert_between(2, dll._header._next, dll._trailer)
+    dll._insert_between(3, dll._header._next._next, dll._trailer)
+
+    dll.reverse()

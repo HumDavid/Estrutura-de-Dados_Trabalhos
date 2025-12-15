@@ -154,107 +154,18 @@ class ArrayDeque:
     
 
 
-if __name__ == '__main__':
-    ## exemplos
-    print('============ stack ============')
-    stack = ArrayStack()
+if __name__ == "__main__":
+    s = ArrayStack()
+    s.push(1)
+    s.push(2)
+    print("Stack:", s)
 
-    print('vazio?:', stack.is_empty())
+    q = ArrayQueue()
+    q.enqueue(1)
+    q.enqueue(2)
+    print("Queue:", q)
 
-    stack.push(5)
-    print('stack.push(5)')
-
-    print('top():', stack.top())
-
-    stack.push(7)
-    print('stack.push(7)')
-    stack.push(10)
-    print('stack.push(10)')
-
-    print('len():', stack.__len__())
-
-    print('pop()', stack.pop())
-    print('stack:', stack)
-
-    stack.push(11)
-    print('stack.push(11)')
-    stack.push(12)
-    print('stack.push(12)')
-    stack.push(15)
-    print('stack.push(15)')
-    
-    print('len():', stack.__len__())
-
-    print('stack:', stack)
-
-    print('vazio?:', stack.is_empty())
-
-    # queue
-    print('============ queue ============')
-    queue = ArrayQueue()
-
-    print('vazio?:', queue.is_empty())
-
-    queue.enqueue(5)
-    print('queue.enqueue(5)')
-
-    print('top():', queue.dequeue())
-
-    queue.enqueue(7)
-    print('queue.enqueue(7)')
-    queue.enqueue(10)
-    print('queue.enqueue(10)')
-
-    print('len():', queue.__len__())
-
-    print('pop()', queue.dequeue())
-    print('queue:', queue)
-
-    queue.enqueue(11)
-    print('queue.enqueue(11)')
-    queue.enqueue(12)
-    print('queue.enqueue(12)')
-    queue.enqueue(15)
-    print('queue.enqueue(15)')
-    
-    print('len():', queue.__len__())
-
-    print('queue:', queue)
-
-    print('vazio?:', queue.is_empty())
-
-    # deque
-    print('============ deque ============')
-    deque = ArrayDeque()
-
-    print('vazio?:', deque.is_empty())
-
-    deque.add_first(3)
-    print('deque.add_first(3)')
-    deque.add_last(4)
-    print('deque.add_last(4)')
-    deque.add_first(2)
-    print('deque.add_first(2)')
-    deque.add_last(5)
-    print('deque.add_last(5)')
-    deque.add_first(1)
-    print('deque.add_first(1)')
-
-    print('len():', deque.__len__())
-
-    print('first:', deque.first())
-    print('last:', deque.last())
-
-    print('deque:', deque)
-
-    deque.delete_first()
-    print('deque.delete_first()')
-    print('deque:', deque)
-
-    deque.delete_last()
-    print('deque.delete_last()')
-    print('deque:', deque)
-
-    print('len():', deque.__len__())
-
-    print('vazio?:', deque.is_empty())
+    d = ArrayDeque()
+    d.add_first(1)
+    d.add_last(2)
+    print("Deque:", d)

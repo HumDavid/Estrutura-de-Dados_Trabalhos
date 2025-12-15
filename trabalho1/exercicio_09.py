@@ -3,7 +3,6 @@
 ##  formas infixas e pós-fixadas equivalentes.
 
 from trabalho1.exercicio_01 import ArrayStack
-import os
 
 def prefixa_to_infixa(expression):
     pilha = ArrayStack()
