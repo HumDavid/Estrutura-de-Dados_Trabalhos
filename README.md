@@ -7,3 +7,6 @@ Implementação de árvores binárias (encadeadas e em array) e desenvolvimento 
 
 ## Trabalho 3
 Implementação de árvores de busca binária, árvores AVL e árvores rubro-negras, incluindo inserções, remoções, balanceamento e análise estrutural das árvores resultantes.
+
+## Trabalho 4
+Implementação de algoritmos clássicos de ordenação com contagem de comparações e trocas (ou atribuições), aplicados a uma lista fixa de testes.
